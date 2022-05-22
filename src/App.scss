@@ -1,0 +1,10 @@
+@import "global";
+
+body {
+  background: $background-1;
+  color: $primary;
+  overflow: hidden;
+
+  @include default-box;
+}
+

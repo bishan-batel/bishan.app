@@ -1,5 +1,40 @@
 @import "/src/global.scss";
 
 .Button {
+  $transition-time: 500ms;
+  position: relative;
+  background: $accent3;
+  color: #fff;
   border: none;
+  outline: none;
+  font-size: 1.6rem;
+  height: 2em;
+  padding: 0 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background: transparent;
+    color: $accent3;
+
+    &:after {
+      width: 100%;
+      transition: $transition-time ease all;
+      border-radius: 10px;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    transition: calc($transition-time/2) ease all;
+    right: inherit;
+    height: 5px;
+    width: 0;
+    background: $primary;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+  }
+
+  transition: $transition-time ease all;
 }

@@ -3,15 +3,18 @@ import { motion } from "framer-motion";
 import TrackVisibility from "react-on-screen";
 import { CSSProperties, FC } from "react";
 import Tag from "../../components/Tag";
-import projects, { Project } from "../../projects";
+import projects, { Project } from "../project/projects";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function Home() {
   return (
-    <article id="home">
-      <Name />
-      <AboutMe />
-    </article>
+    <>
+      <article id="home">
+        <Name />
+        <AboutMe />
+      </article>
+    </>
   );
 }
 
@@ -22,6 +25,7 @@ function Spacer({ img }: { img: string }) {
 
   return <div className="spacer" style={style} />;
 }
+
 // Sections
 function Name() {
   return (
@@ -36,8 +40,9 @@ function Name() {
 function AboutMe() {
   const navigate = useNavigate();
 
-  const Tech: FC<{ proj: Project }> = ({ proj }) => {
-    const style: any = { "--image": `url(${proj.imageURL})` };
+  const ProjectJSX: FC<{ proj: Project }> = ({ proj }) => {
+    const image = proj.imageURL == "" ? "black" : "url(" + proj.imageURL + ")";
+    const style: any = { "--image": image };
 
     return (
       <li
@@ -51,7 +56,7 @@ function AboutMe() {
   };
 
   const tech: JSX.Element[] = [];
-  projects.forEach((p) => tech.push(<Tech proj={p} />));
+  projects.forEach((p) => tech.push(<ProjectJSX proj={p} />));
 
   return (
     <>
@@ -73,7 +78,6 @@ function AboutMe() {
           <ul id="project-list">{tech}</ul>
         </Tag>
       </section>
-      <Spacer img="/images/wave2.svg" />
     </>
   );
 }

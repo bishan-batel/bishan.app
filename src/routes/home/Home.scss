@@ -1,185 +1,37 @@
 @import "/src/global";
 
-#home {
+#gallery {
+  position: absolute;
+  width: 130vmax;
+  height: 130vmax;
+
+  //background-image: url("images/abstract.jpeg");
+  background-size: cover;
+  transition: all ease-in-out;
+}
+
+#glcanvas {
+  position: absolute;
   width: 100%;
-  max-height: 100vh;
-  min-height: 100vh;
+  height: 100%
+}
 
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-snap-points-y: repeat(100vh);
+#logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
-  section {
-    scroll-snap-align: center;
+  text-wrap: none;
+
+  //background: rgba(0, 0, 0, 0.29);
+  font-size: 4rem;
+  font-style: italic;
+
+
+  h1 {
     width: 100%;
-
-    &:nth-of-type(2n) {
-      background: $background-2;
-    }
-  }
-
-  .spacer {
-    aspect-ratio: 5/2;
-    width: 100%;
-
-    background: var(--image) center;
-    background-size: cover;
-  }
-
-  #name {
-    @include center-flex;
-    flex-direction: column;
-    height: 40vh;
-
-    // default offset for header
-    $default-y: 20vh;
-
-    // Key frames
-    @keyframes slide {
-      from {
-        opacity: 0%;
-        transform: translateY(calc($default-y + 5rem));
-        filter: hue-rotate(360deg);
-      }
-      to {
-        opacity: 100%;
-        transform: translateY(var($default-y));
-        filter: hue-rotate(0deg);
-      }
-    }
-
-    @keyframes header-underline {
-      from {
-        width: 0;
-        left: 0;
-      }
-      to {
-        width: 120%;
-        left: -10%;
-      }
-    }
-
-    // title card
-    h1 {
-      font-size: 3rem;
-      font-style: italic;
-      animation: slide 1s ease-in-out;
-      transform: translateY($default-y);
-
-      // Underline
-      &::after {
-        content: "";
-        position: relative;
-        display: block;
-        border-bottom: $accent1 solid 3px;
-        transition: 0.4s;
-        width: 120%;
-        left: -10%;
-
-        animation: header-underline 1.2s cubic-bezier(1, -0.02, 0.43, 1.17);
-      }
-    }
-  }
-
-  #about {
-    @include center-flex;
-    height: 70vh;
-    padding-bottom: 2rem;
-
-    #about-me-descript {
-      transform: translateY(-10rem);
-      width: 55vh;
-
-      h2 {
-        font-size: 3rem;
-      }
-      p {
-        text-align: left;
-        margin-left: 2rem;
-        margin-right: 2rem;
-        overflow: visible;
-        text-align: justify;
-
-        .tag {
-          .first,
-          .last {
-            position: relative;
-            display: block;
-            left: -2rem;
-          }
-        }
-      }
-    }
-
-    #project-list-tag {
-      height: 100%;
-      border-radius: 5px;
-      padding-bottom: 3rem;
-
-      .first,
-      .last {
-        display: block;
-      }
-      .element {
-        color: $accent1;
-      }
-
-      // Grid layout
-      #project-list {
-        display: inline-grid;
-        gap: 10px;
-        grid-template-columns: repeat(3, 1fr);
-        @include default-box;
-        padding: 2rem;
-
-        list-style: none;
-        max-height: 80%;
-        overflow-y: scroll;
-
-        // Individual Projects
-        .project {
-          @include default-box;
-          width: 8rem;
-          height: 8rem;
-          border-radius: 5px;
-
-          background: var(--image);
-          background-size: cover;
-          border: solid transparent 3px;
-
-          filter: blur(1px) grayscale(70%);
-
-          .name {
-            position: absolute;
-            text-align: center;
-
-            width: 0;
-            top: -1rem;
-            opacity: 0;
-
-            font-size: 1.5rem;
-            filter: drop-shadow(-5px -5px 5px $background-1);
-
-            transition: 300ms ease-in-out;
-            background: $background-4;
-          }
-          transition: 200ms ease-in-out;
-
-          &:hover {
-            filter: none;
-            transform: scale(1.1);
-            border: solid $accent1 3px;
-            cursor: pointer;
-
-            .name {
-              opacity: 100%;
-              width: calc(100% + 5px);
-              top: -0.5rem;
-              transform: translateX(calc(-5px / 2));
-            }
-          }
-        }
-      }
-    }
+    height: 100%;
+    text-align: center;
   }
 }

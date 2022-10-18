@@ -1,9 +1,11 @@
 @import "global";
 
 body {
+  color-scheme: dark;
   background: $background-1;
   color: $primary;
   overflow: hidden;
+  font: $default-font;
 
   @include default-box;
 }

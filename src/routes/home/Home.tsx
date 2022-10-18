@@ -1,83 +1,36 @@
+import {MouseEventHandler, useState, createRef} from "react";
+import BackgroundCanvas from "./BackgroundCanvas";
 import "./Home.scss";
-import { motion } from "framer-motion";
-import TrackVisibility from "react-on-screen";
-import { CSSProperties, FC } from "react";
-import Tag from "../../components/Tag";
-import projects, { Project } from "../project/projects";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
 
 export default function Home() {
-  return (
-    <>
-      <article id="home">
-        <Name />
-        <AboutMe />
-      </article>
-    </>
-  );
-}
+    const galleryRef = createRef<HTMLElement>();
 
-function Spacer({ img }: { img: string }) {
-  const style: any = {
-    "--image": `url(${img})`,
-  };
+    const panMouse: MouseEventHandler<HTMLElement> = (ev) => {
+        const gallery = galleryRef.current;
+        if (!gallery) return;
 
-  return <div className="spacer" style={style} />;
-}
+        const decX = ev.clientX / window.innerWidth;
+        const decY = ev.clientY / window.innerHeight;
 
-// Sections
-function Name() {
-  return (
-    <section id="name">
-      <h1>
-        <Tag ele="h1">Kishan Patel</Tag>
-      </h1>
-    </section>
-  );
-}
+        const x = -decX * (gallery.offsetWidth - window.innerWidth);
+        const y = -decY * (gallery.offsetHeight - window.innerHeight);
 
-function AboutMe() {
-  const navigate = useNavigate();
-
-  const ProjectJSX: FC<{ proj: Project }> = ({ proj }) => {
-    const image = proj.imageURL == "" ? "black" : "url(" + proj.imageURL + ")";
-    const style: any = { "--image": image };
+        gallery.animate(
+            {
+                transform: `translate(${x}px, ${y}px)`,
+            },
+            {duration: 1000, fill: "forwards", easing: "ease"}
+        );
+    };
 
     return (
-      <li
-        style={style}
-        className="project"
-        onClick={() => navigate(`/project/${proj.shortName}`)}
-      >
-        <h3 className="name">{proj.name}</h3>
-      </li>
+        <section id="gallery" onMouseMove={panMouse} ref={galleryRef}>
+            <BackgroundCanvas/>
+            <Logo/>
+        </section>
     );
-  };
+}
 
-  const tech: JSX.Element[] = [];
-  projects.forEach((p) => tech.push(<ProjectJSX proj={p} />));
-
-  return (
-    <>
-      <Spacer img="/images/wave1.svg" />
-      <section id="about">
-        <div id="about-me-descript">
-          <h2>
-            <Tag ele="h2">Portfolio</Tag>
-          </h2>
-          <p>
-            <Tag ele="p">
-              A gallery of projects of which I'm proud and things I just think
-              are cool.
-            </Tag>
-          </p>
-        </div>
-
-        <Tag ele="section" id="project-list-tag">
-          <ul id="project-list">{tech}</ul>
-        </Tag>
-      </section>
-    </>
-  );
+function Logo() {
+    return <div id="logo"><h1>Kishan Patel</h1></div>
 }

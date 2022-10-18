@@ -22,7 +22,7 @@ export default function BackgroundCanvas() {
         // change width dynamically
         const resizeCanvas = () => {
             canvas.width = canvas.clientWidth;
-            canvas.height = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
             gl.viewport(0, 0, canvas.width, canvas.height);
         };
         resizeCanvas();

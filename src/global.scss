@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-$default-font: 'JetBrains Mono', monospace;
+$default-font: "JetBrains Mono", monospace;
 
 $primary: #ffffffff;
-$background-4: #403f4cff;
-$background-3: #2c2b3cff;
-$background-2: #1b2432ff;
-$background-1: #121420ff;
+$background-3: #38495e;
+$background-2: #2b394b;
+$background-1: #1b2432ff;
 
-$accent1: #ccb9ff;
-$accent2: #bacdff;
-$accent3: #25bd9a;
+$accent-1: #926edc;
+$accent-2: #f14f72;
+$accent-3: #25bd9a;
 
 @mixin center-flex {
   display: flex;
@@ -27,4 +26,19 @@ $accent3: #25bd9a;
 @mixin expand {
   width: 100%;
   height: 100%;
+}
+
+body {
+  background: $background-1;
+}
+
+#root {
+  position: absolute;
+  @include expand;
+}
+
+.page {
+  @include expand;
+  @include center-flex;
+  flex-direction: column;
 }

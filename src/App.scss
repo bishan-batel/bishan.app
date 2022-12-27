@@ -8,4 +8,12 @@ body {
   font: $default-font;
 
   @include default-box;
+
+  // center backround image
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./forest.jpg");
+  width: 100%;
+  height: 100%;
 }

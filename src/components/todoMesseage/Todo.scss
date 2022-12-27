@@ -1,0 +1,29 @@
+@import "/src/global.scss";
+
+.todo {
+  @include center-flex;
+  flex-direction: column;
+  position: relative;
+
+  padding: 2em;
+  background: $background-2;
+  border-radius: 15px;
+
+  h1 {
+    font-size: 3em;
+    color: $accent-2;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1em;
+    color: $primary;
+  }
+
+  transition: 150ms  ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+    background: $background-3;
+    filter: drop-shadow(0 0 0.5em $background-3);
+  }
+}

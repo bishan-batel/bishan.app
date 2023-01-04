@@ -30,6 +30,7 @@ $accent-3: #25bd9a;
 
 body {
   background: $background-1;
+  font-family: $default-font;
 }
 
 #root {
@@ -38,7 +39,22 @@ body {
 }
 
 .page {
-  @include expand;
   @include center-flex;
+  position: absolute;
   flex-direction: column;
+
+  top: 10%;
+  width: 100%;
+  height: 85%;
+  margin: 2rem;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// center 
+.emoji {
+  width: 1em;
+  height: 1em;
 }

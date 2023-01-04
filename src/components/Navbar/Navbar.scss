@@ -8,6 +8,7 @@
   margin: 1rem;
   left: 50%;
   transform: translateX(-50%);
+  width: 90%;
 
   background: $background-2;
   border-radius: 10px;
@@ -32,6 +33,20 @@
 
       h1 {
         display: none;
+      }
+    }
+    
+    .links {
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      justify-content: flex-start;
+
+      .link {
+        margin: 0;
+        padding: 0.5rem;
+        text-align: left;
       }
     }
   }
@@ -66,23 +81,29 @@
     }
   }
 
-  .link {
-    @include center-flex;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: transparent;
-    color: $primary;
-    margin: 0.5em;
-    font-size: 1.2em;
-    text-align: center;
+  .links {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
-    transition: 150ms ease-in-out;
+    .link {
+      @include center-flex;
+      text-decoration: underline;
+      text-decoration-thickness: 0px;
+      text-decoration-color: transparent;
+      color: $primary;
+      margin: 0.5em;
+      font-size: 1.2em;
+      text-align: center;
 
-    &.active,
-    &:hover {
-      color: $accent-1;
-      text-decoration-color: $accent-3;
-      text-decoration-thickness: 5px;
+      transition: 150ms ease-in-out;
+
+      &.active,
+      &:hover {
+        color: $accent-1;
+        text-decoration-color: $accent-3;
+        text-decoration-thickness: 4px;
+      }
     }
   }
 }

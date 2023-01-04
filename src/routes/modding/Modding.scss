@@ -1,0 +1,40 @@
+@import "/src/global.scss";
+
+#modding {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+
+  --subpage-width: 0%;
+  --subpage-opacity: 0;
+
+  #modList {
+    @include expand;
+    transition: all 200ms ease-in-out;
+    scroll-behavior: smooth;
+    text-align: center;
+
+    overflow-y: scroll;
+    // snap  every 10rem
+    scroll-snap-type: y mandatory;
+
+    #moddingHeader {
+      color: $accent-3;
+      text-decoration: none;
+    }
+
+    > .panelList {
+      position: relative;
+      font-size: 1.3em;
+    }
+  }
+
+  .moddingSubPage {
+    @include expand;
+    transition: all 200ms ease-in-out;
+    background: $background-2;
+    border-radius: 15px;
+  }
+}

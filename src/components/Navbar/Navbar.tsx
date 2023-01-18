@@ -27,6 +27,7 @@ export default function Navbar() {
       <span className="links">
         <LinkComponent to={"/small&fun"}>Small & Fun</LinkComponent>
         <LinkComponent to={"/gamedev"}>Game Development</LinkComponent>
+        <LinkComponent to={"/music"}>Music</LinkComponent>
         <LinkComponent to={"/modding"}>Modding</LinkComponent>
         <LinkComponent to={"/about"}>About</LinkComponent>
       </span>

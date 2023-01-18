@@ -4,3 +4,35 @@
   @include center-flex;
   @include expand;
 }
+
+#homepage {
+  // background image with $background1 tint
+  // background: linear-gradient(to bottom, rgba($background-1, 0.8)),
+    // ;
+
+  .me {
+    position: absolute;
+
+    $margin-right: 3.5rem;
+    right: $margin-right;
+
+    // slide in animation
+    @keyframes slide-in {
+      0% {
+        right: 0;
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0%);
+        opacity: 1;
+        right: $margin-right;
+      }
+    }
+
+    animation: slide-in 1s ease-in-out;
+    h1 {
+      font-size: 4.5rem;
+    }
+  }
+}

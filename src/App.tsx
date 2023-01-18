@@ -8,6 +8,7 @@ import SmallAndFun from "./routes/fun/Short&Fun";
 import GameDev from "./routes/gamedev/GameDev";
 import About from "./routes/about/About";
 import Juicebox from "./routes/modding/Juicebox";
+import Music from "./routes/music/Music";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/modding/*" element={<Modding />}/>
+        <Route path="/music/*" element={<Music />}/>
         <Route path="/small&fun/*" element={<SmallAndFun />} />
         <Route path="/gamedev/*" element={<GameDev />} />
         <Route path="/about" element={<About />} />

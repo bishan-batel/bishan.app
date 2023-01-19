@@ -1,5 +1,5 @@
 import "./Juicebox.scss"
 
 export default function Juicebox() {
-  return <section className="moddingSubPage">juice</section>
+    // return <section className="moddingSubPage">juice</section>
 }

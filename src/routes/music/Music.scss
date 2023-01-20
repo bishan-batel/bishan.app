@@ -32,7 +32,7 @@
 
   .works {
     position: absolute;
-    right: 5%;
+    right: 10%;
     //  list
     display: flex;
     flex-direction: column;
@@ -52,13 +52,18 @@
       padding: 1rem;
       border-radius: 10px;
       border: 2px solid $accent-2;
-
+      opacity: 0.8;
       transition: 200ms ease-in-out;
 
       &:hover {
         background: $background-3;
         border: 2px solid $accent-3;
+        transform: translate(-1rem, 0) scale(1.01);
+        // drop shadow
+        opacity: 1;
+        filter: drop-shadow(0px 5px 5px black);
       }
+
 
       h2 {
         color: $primary;
@@ -71,13 +76,78 @@
           color: $accent-1;
           font-size: 0.25em;
 
-          // apear rotated 90 degrees to the right of the h2
+          // appear rotated 90 degrees to the right of the h2
           display: inline;
           position: absolute;
           transform: translate(20%, 200%);
-        25%, 100%}
+        }
       }
+
+      .inner {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        .description {
+          width: 60%;
+        }
+
+        .audio-player {
+          width: 10%;
+          margin-left: 30%;
+        }
+      }
+
     }
   }
 
+}
+
+.audio-player {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  button, a {
+    margin: .5rem;
+    padding: 0;
+    font-size: 2rem;
+    border: none;
+    background: none;
+    width: 3rem;
+    height: 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // elastic transition
+    transition: 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+      transform: translateX(-.3rem);
+      filter: drop-shadow(0px 5px 5px rgba($background-1, 0.8));
+      cursor: pointer;
+    }
+
+    // rotate animatoin
+    &:active {
+      transform: translateX(-.3rem) scale(1.1);
+    }
+  }
+
+  // animated border
+  .playing {
+    transform: scale(1);
+  }
+
+  .reset {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
